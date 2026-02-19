@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* Global theming helpers */
+:root {
+  --bg: 255 255 255; /* light background */
+  --fg: 17 24 39;     /* light foreground */
+}
+.dark:root {
+  --bg: 17 24 39;     /* gray-900 */
+  --fg: 243 244 246;  /* gray-100 */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
