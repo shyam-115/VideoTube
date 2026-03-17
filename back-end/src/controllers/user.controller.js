@@ -6,6 +6,18 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 
+/**
+ * Returns cookie options appropriate for the current environment.
+ * In production (cross-origin on Render), sameSite must be 'none' + secure: true
+ * so the browser actually sends the cookie back on cross-origin requests.
+ * In development, sameSite defaults to 'lax' which works for same-origin.
+ */
+const getCookieOptions = () => ({
+    httpOnly: true,
+    secure: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+});
+
 const genAccessAndRefreshToken = async (userId) => {
     try {
         const user = await User.findById(userId)
@@ -105,10 +117,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
-    const option = {
-        httpOnly: true,
-        secure: true,
-    }
+    const option = getCookieOptions();
 
     return res
         .status(200)
@@ -140,10 +149,7 @@ const logoutUser = asyncHandler(async (req, res) => {
             new: true
         }
     )
-    const option = {
-        httpOnly: true,
-        secure: true,
-    }
+    const option = getCookieOptions();
 
     return res
         .status(200)
@@ -175,10 +181,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
             throw new ApiError(401, "refresh token is used or expired")
         }
 
-        const option = {
-            httpOnly: true,
-            secure: true
-        }
+        const option = getCookieOptions();
 
         const { accessToken, refreshToken } = await genAccessAndRefreshToken(user._id)
         return res
