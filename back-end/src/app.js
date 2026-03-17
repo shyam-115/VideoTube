@@ -12,6 +12,7 @@ const app = express();
 
 app.use(requestId);
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
+app.use(cookieParser()); // Must be early so req.cookies is available in all routes
 
 // General API rate limit (e.g. 200 req/min per IP)
 const apiLimiter = rateLimit({
@@ -53,8 +54,7 @@ app.use(express.urlencoded({ extended: true, limit: '16kb' }));
 //extended: true => Allows nested objects like: user[address][city] = "Delhi"
 
 app.use(express.static('public'));
-app.use(cookieParser());
-//Parses cookies from incoming requests. Adds them to req.cookies.
+
 
 // Health check for load balancers / monitoring
 app.get('/api/v1/health', (_req, res) => {
