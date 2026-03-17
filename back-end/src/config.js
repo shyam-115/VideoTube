@@ -26,7 +26,7 @@ function validateEnv() {
 }
 
 const config = {
-  port: parseInt(process.env.PORT || '8000', 10),
+  port: parseInt(process.env.PORT || '10000', 10),
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:5174',
   nodeEnv: process.env.NODE_ENV || 'development',
   isProduction: process.env.NODE_ENV === 'production',
