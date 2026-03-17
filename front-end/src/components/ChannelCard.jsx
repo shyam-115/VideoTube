@@ -61,22 +61,22 @@ const ChannelCard = ({ channel }) => {
   };
 
   return (
-    <div className="rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 bg-white border border-gray-200 hover:border-blue-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-blue-500 hover:-translate-y-1">
+    <div className="rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-zinc-200/80 hover:border-violet-300/50 dark:bg-zinc-900/50 dark:border-zinc-800/80 dark:hover:border-violet-500/50 hover:-translate-y-1.5 backdrop-blur-sm">
       <Link to={`/channel/${channel.username}`} className="block">
         <div className="flex items-center space-x-4 mb-4 group">
           <img
             src={channel.avatar}
             alt={channel.username}
-            className="w-16 h-16 rounded-full object-cover ring-2 ring-gray-200 dark:ring-gray-700 group-hover:ring-blue-300 dark:group-hover:ring-blue-500 transition-all duration-300"
+            className="w-16 h-16 rounded-full object-cover ring-2 ring-zinc-200 dark:ring-zinc-700 group-hover:ring-violet-400 dark:group-hover:ring-violet-500 group-hover:scale-105 shadow-sm transition-all duration-300"
           />
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+            <h3 className="text-xl font-semibold text-zinc-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors duration-200">
               {channel.fullname}
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-200">
+            <p className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors duration-200 mt-0.5">
               @{channel.username}
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-500 font-medium">
+            <p className="text-sm text-zinc-400 dark:text-zinc-500 font-medium mt-1">
               {subscriberCount} subscribers
             </p>
           </div>
@@ -97,12 +97,12 @@ const ChannelCard = ({ channel }) => {
         <button
           onClick={handleSubscribe}
           disabled={loading}
-          className="relative inline-flex items-center justify-center p-[2px] overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-blue-600 to-purple-500 hover:from-blue-700 hover:to-purple-600 transition-all duration-300 w-full disabled:opacity-50"
+          className="relative inline-flex items-center justify-center p-[2px] overflow-hidden text-sm font-medium text-white rounded-xl group bg-gradient-to-br from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all duration-300 w-full disabled:opacity-50 shadow-sm hover:shadow-violet-500/25 active:scale-[0.98]"
         >
-          <span className="relative px-4 py-2.5 transition-all ease-in duration-75 bg-transparent rounded-md group-hover:bg-opacity-0 w-full text-center">
+          <span className="relative px-4 py-2.5 transition-all ease-in duration-75 bg-transparent rounded-[10px] group-hover:bg-opacity-0 w-full text-center">
             {loading ? (
               <>
-                <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2 inline"></div>
+                <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2 inline-block align-middle"></div>
                 {isSubscribed ? 'Unsubscribing...' : 'Subscribing...'}
               </>
             ) : (

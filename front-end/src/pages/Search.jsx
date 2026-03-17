@@ -46,12 +46,12 @@ const Search = () => {
   if (!query) {
     return (
       <div className="max-w-3xl mx-auto p-6 mt-6 text-center">
-        <div className="rounded-2xl border border-gray-200 p-8 bg-white/80 backdrop-blur dark:bg-gray-800/80 dark:border-gray-700">
-          <div className="flex items-center justify-center mb-3 text-gray-600 dark:text-gray-300">
-            <SearchIcon className="w-6 h-6 mr-2" />
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Search for videos and channels</h1>
+        <div className="rounded-3xl border border-zinc-200/50 p-10 bg-white/70 backdrop-blur-xl dark:bg-zinc-900/70 dark:border-zinc-800/50 shadow-xl">
+          <div className="flex items-center justify-center mb-4 text-zinc-600 dark:text-zinc-300">
+            <SearchIcon className="w-8 h-8 mr-3 text-violet-500" />
+            <h1 className="text-3xl font-bold text-zinc-900 dark:text-white tracking-tight">Search for videos and channels</h1>
           </div>
-          <p className="text-gray-600 dark:text-gray-400">Use the search bar above to start exploring.</p>
+          <p className="text-zinc-500 dark:text-zinc-400 text-lg">Use the search bar above to start exploring.</p>
         </div>
       </div>
     );
@@ -62,44 +62,46 @@ const Search = () => {
       <div className="mb-4">
         <BackButton to="/home" />
       </div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6">
           Search results for "{query}"
         </h1>
         
         {/* Tab Navigation */}
-        <div className="flex space-x-2 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex space-x-2 border-b border-zinc-200 dark:border-zinc-800 relative">
           <button
             onClick={() => setActiveTab('videos')}
-            className={`px-4 py-2 rounded-t-lg font-medium transition-colors ${
+            className={`px-5 py-2.5 rounded-t-xl font-medium transition-all duration-300 relative ${
               activeTab === 'videos'
-                ? 'text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-gray-800'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                ? 'text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/10'
+                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900/50'
             }`}
           >
             Videos
+            {activeTab === 'videos' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-violet-600 dark:bg-violet-500"></div>}
           </button>
           <button
             onClick={() => setActiveTab('channels')}
-            className={`px-4 py-2 rounded-t-lg font-medium transition-colors ${
+            className={`px-5 py-2.5 rounded-t-xl font-medium transition-all duration-300 relative ${
               activeTab === 'channels'
-                ? 'text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-gray-800'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                ? 'text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/10'
+                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900/50'
             }`}
           >
             Channels
+            {activeTab === 'channels' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-violet-600 dark:bg-violet-500"></div>}
           </button>
         </div>
       </div>
 
       {loading && (
         <div className="min-h-[20vh] flex items-center justify-center">
-          <div className="animate-spin rounded-full h-10 w-10 border-4 border-gray-300 border-t-blue-600 dark:border-gray-700 dark:border-t-blue-500"></div>
+          <div className="animate-spin rounded-full h-10 w-10 border-4 border-zinc-200 border-t-violet-600 dark:border-zinc-800 dark:border-t-violet-500"></div>
         </div>
       )}
 
       {error && (
-        <div className="text-center mt-8 text-red-600 dark:text-red-500">{error}</div>
+        <div className="text-center mt-8 text-red-500 font-medium">{error}</div>
       )}
 
       {!loading && !error && (

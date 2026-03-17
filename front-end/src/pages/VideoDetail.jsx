@@ -256,7 +256,7 @@ const VideoDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
       {/* YouTube-like container */}
       <div className="max-w-screen-2xl mx-auto">
         <div className="p-4 pb-2">
@@ -266,8 +266,8 @@ const VideoDetail = () => {
           {/* Main video content */}
           <div className="lg:col-span-8">
             {/* YouTube-like Video Player Section */}
-            <div className="relative mb-4">
-              <div className="bg-black rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative mb-6">
+              <div className="bg-black rounded-2xl overflow-hidden shadow-xl ring-1 ring-zinc-200/50 dark:ring-zinc-800/50">
                 {/* Video Container with 16:9 aspect ratio */}
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
                   <video
@@ -289,76 +289,73 @@ const VideoDetail = () => {
             </div>
 
             {/* Video Title */}
-            <h1 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-3 leading-tight">
+            <h1 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white mb-3 leading-tight tracking-tight">
               {video.title}
             </h1>
 
             {/* Video Stats and Actions */}
-            <div className="flex items-center justify-between mb-4 flex-wrap gap-4">
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
               {/* View count and date */}
-              <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex items-center space-x-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
                 <span>{video.views ? formatCount(video.views) : '0'} views</span>
                 <span>•</span>
                 <span>{video.createdAt ? formatDate(video.createdAt) : 'Recently'}</span>
               </div>
 
               {/* Action buttons */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-3">
                 {/* Like/Dislike */}
-                <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-full">
+                <div className="flex items-center bg-zinc-100 dark:bg-zinc-800/80 rounded-full shadow-sm">
                   <button
                     onClick={() => handleLike("like")}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-l-full transition-all hover:bg-gray-200 dark:hover:bg-gray-700 ${userReaction === "like" ? "text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-l-full transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700 ${userReaction === "like" ? "text-violet-600 dark:text-violet-400" : "text-zinc-700 dark:text-zinc-200 hover:text-violet-600 dark:hover:text-violet-400"
                       }`}
                   >
-                    <ThumbsUp className="w-5 h-5" />
-                    <span className="font-medium">{formatCount(likes)}</span>
+                    <ThumbsUp className="w-5 h-5 mb-0.5" />
+                    <span className="font-semibold">{formatCount(likes)}</span>
                   </button>
-                  <div className="w-px h-6 bg-gray-300 dark:bg-gray-600"></div>
+                  <div className="w-px h-6 bg-zinc-300 dark:bg-zinc-600"></div>
                   <button
                     onClick={() => handleLike("dislike")}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-r-full transition-all hover:bg-gray-200 dark:hover:bg-gray-700 ${userReaction === "dislike" ? "text-red-600 dark:text-red-400" : "text-gray-700 dark:text-white hover:text-red-600 dark:hover:text-red-400"
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-r-full transition-all hover:bg-zinc-200 dark:hover:bg-zinc-700 ${userReaction === "dislike" ? "text-red-500 dark:text-red-400" : "text-zinc-700 dark:text-zinc-200 hover:text-red-500 dark:hover:text-red-400"
                       }`}
                   >
-                    <ThumbsDown className="w-5 h-5" />
-                    <span className="font-medium">{formatCount(dislikes)}</span>
+                    <ThumbsDown className="w-5 h-5 mt-0.5" />
+                    <span className="font-semibold">{formatCount(dislikes)}</span>
                   </button>
                 </div>
 
                 {/* Share */}
                 <button
                   onClick={openShareModal}
-                  className="flex items-center space-x-2 px-4 py-2 rounded-full transition-all bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+                  className="flex items-center space-x-2 px-5 py-2 rounded-full transition-all bg-zinc-100 text-zinc-700 font-semibold hover:bg-zinc-200 dark:bg-zinc-800/80 dark:text-zinc-200 dark:hover:bg-zinc-700 shadow-sm active:scale-95"
                 >
-                  <Share2 className="w-5 h-5" />
-                  <span className="font-medium hidden sm:inline">Share</span>
+                  <Share2 className="w-[18px] h-[18px]" />
+                  <span className="hidden sm:inline">Share</span>
                 </button>
-
-                {/* More options */}
-                
               </div>
             </div>
 
             {/* Channel info and subscribe */}
-            <div className="flex items-center justify-between rounded-xl p-4 mb-4 bg-gray-50 border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-              <div className="flex items-center space-x-3">
+            <div className="flex items-center justify-between rounded-2xl p-4 mb-4 bg-white border border-zinc-200/80 dark:bg-zinc-900 dark:border-zinc-800/80 shadow-sm">
+              <div className="flex items-center space-x-4">
                 <img
                   src={video.owner.avatar}
                   alt={video.owner.username}
-                  className="w-10 h-10 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-zinc-100 dark:ring-zinc-800"
                 />
                 <div>
-                  <p className="font-semibold text-gray-900 dark:text-white">{video.owner.fullname}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{formatCount(subscriberCount)} subscribers</p>
+                  <p className="font-bold text-zinc-900 dark:text-white">{video.owner.fullname}</p>
+                  <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">{formatCount(subscriberCount)} subscribers</p>
                 </div>
               </div>
 
               {user && (
                 <button
                   onClick={handleSubscribe}
-                  className={`px-4 py-2 rounded-full font-medium transition-all ${isSubscribed
-                      ? "bg-gray-600 text-white hover:bg-gray-700"
-                      : "bg-red-600 text-white hover:bg-red-700"
+                  className={`px-5 py-2.5 rounded-xl font-semibold transition-all shadow-sm active:scale-95 ${isSubscribed
+                      ? "bg-zinc-200 text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-600"
+                      : "bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white shadow-violet-500/25"
                     }`}
                 >
                   {isSubscribed ? "Subscribed" : "Subscribe"}
@@ -367,13 +364,12 @@ const VideoDetail = () => {
             </div>
 
             {/* Description */}
-            <div className="rounded-xl p-4 mb-6 bg-gray-50 border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-              <div className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line">
-                <p className="font-semibold mb-2">Description:</p>
-                {video.description.length > 200 ? (
+            <div className="rounded-2xl p-5 mb-8 bg-zinc-100/50 dark:bg-zinc-800/30 font-medium text-sm leading-relaxed whitespace-pre-line border border-zinc-200/50 dark:border-zinc-800/50">
+              <div className="text-zinc-800 dark:text-zinc-200">
+                {video.description.length > 250 ? (
                   <div>
-                    <p>{video.description.substring(0, 200)}...</p>
-                    <button className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 mt-2 font-medium">
+                    <p>{video.description.substring(0, 250)}...</p>
+                    <button className="text-violet-600 hover:text-violet-500 dark:text-violet-400 dark:hover:text-violet-300 mt-2 font-bold transition-colors">
                       Show more
                     </button>
                   </div>
@@ -388,35 +384,35 @@ const VideoDetail = () => {
           {/* Sidebar - Up next */}
           <div className="lg:col-span-4">
             <div className="sticky top-4 space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Up next</h3>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-4">Up next</h3>
 
               {upNextVideos.length === 0 ? (
-                <p className="text-sm text-gray-500 dark:text-gray-400">No other videos yet.</p>
+                <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">No other videos yet.</p>
               ) : (
                 upNextVideos.map((v) => (
                   <Link
                     key={v._id}
                     to={`/video/${v._id}`}
-                    className="flex space-x-3 p-2 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="flex space-x-3 p-2 rounded-xl transition-all hover:bg-white dark:hover:bg-zinc-800/50 group border border-transparent hover:border-zinc-200/50 dark:hover:border-zinc-700/50 hover:shadow-sm"
                   >
-                    <div className="flex-shrink-0 relative w-40 h-24 rounded-lg overflow-hidden bg-gray-300 dark:bg-gray-700">
+                    <div className="flex-shrink-0 relative w-40 aspect-video rounded-xl overflow-hidden bg-zinc-200 dark:bg-zinc-800">
                       <img
                         src={v.thumbnail}
                         alt={v.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 hover:opacity-100 transition-opacity">
-                        <Play className="w-8 h-8 text-white drop-shadow" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Play className="w-8 h-8 text-white drop-shadow-md" />
                       </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-medium text-gray-900 dark:text-white line-clamp-2 mb-1">
+                    <div className="flex-1 min-w-0 py-0.5">
+                      <h4 className="text-[0.95rem] font-semibold text-zinc-900 dark:text-white line-clamp-2 mb-1.5 leading-snug group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                         {v.title}
                       </h4>
-                      <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                      <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-0.5 truncate">
                         {v.owner?.fullname ?? "Channel"}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-500">
+                      <p className="text-xs font-medium text-zinc-400 dark:text-zinc-500">
                         {formatCount(v.views ?? 0)} views • {formatDate(v.createdAt)}
                       </p>
                     </div>

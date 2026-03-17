@@ -36,14 +36,14 @@ const VideoCard = ({ video }) => {
   };
 
   return (
-    <div className="group rounded-xl overflow-hidden border border-gray-200 hover:border-blue-300 dark:border-gray-700 dark:hover:border-blue-500 transition-all duration-300 bg-white dark:bg-gray-800 hover:shadow-lg dark:hover:shadow-blue-500/20 hover:-translate-y-1">
-      <Link to={`/video/${video._id}`} className="block">
+    <div className="group rounded-2xl overflow-hidden border border-zinc-200/80 hover:border-violet-300/50 dark:border-zinc-800/80 dark:hover:border-violet-500/50 transition-all duration-300 bg-white dark:bg-zinc-900/50 backdrop-blur-sm hover:shadow-xl hover:shadow-zinc-200 dark:hover:shadow-violet-900/10 hover:-translate-y-1.5 flex flex-col h-full">
+      <Link to={`/video/${video._id}`} className="block flex-1 flex flex-col">
         {/* Thumbnail with overlay */}
-        <div className="relative">
+        <div className="relative overflow-hidden aspect-video">
           <img
             src={video.thumbnail}
             alt={video.title}
-            className="w-full h-auto object-cover aspect-video transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
@@ -57,27 +57,27 @@ const VideoCard = ({ video }) => {
         </div>
 
         {/* Meta */}
-        <div className="p-4">
-          <h3 className="text-base font-semibold text-gray-900 dark:text-white line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 min-h-[2.5rem] leading-tight">
+        <div className="p-4 flex-1 flex flex-col">
+          <h3 className="text-[1.05rem] font-semibold text-zinc-900 dark:text-zinc-50 line-clamp-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors duration-200 leading-snug">
             {video.title}
           </h3>
-          <div className="mt-3 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+          <div className="mt-3 flex items-center justify-between text-sm text-zinc-500 dark:text-zinc-400">
             {video.owner?.username ? (
               <Link
                 to={`/channel/${video.owner.username}`}
                 onClick={handleChannelClick}
-                className="truncate pr-2 font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="truncate pr-2 font-medium text-zinc-600 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
                 title={video.owner.fullname || video.owner.username}
               >
                 {video.owner.fullname || video.owner.username}
               </Link>
             ) : (
-              <span className="truncate pr-2 font-medium text-gray-700 dark:text-gray-300">
+              <span className="truncate pr-2 font-medium text-zinc-600 dark:text-zinc-300">
                 Unknown Channel
               </span>
             )}
-            <span className="inline-flex items-center text-gray-500 dark:text-gray-500">
-              <Clock className="w-4 h-4 mr-1" /> {timeAgo(video.createdAt)}
+            <span className="inline-flex items-center text-zinc-400 dark:text-zinc-500 text-xs">
+              <Clock className="w-3.5 h-3.5 mr-1" /> {timeAgo(video.createdAt)}
             </span>
           </div>
         </div>

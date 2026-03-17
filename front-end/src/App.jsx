@@ -21,10 +21,10 @@ const ProtectedRoute = ({ children }) => {
   
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-blue-600 dark:border-gray-700 dark:border-t-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-zinc-200 border-t-violet-600 dark:border-zinc-800 dark:border-t-violet-500 mx-auto mb-4"></div>
+          <p className="text-zinc-600 dark:text-zinc-400 font-medium">Loading...</p>
         </div>
       </div>
     );
@@ -39,10 +39,10 @@ const PublicRoute = ({ children }) => {
   
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-blue-600 dark:border-gray-700 dark:border-t-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-zinc-200 border-t-violet-600 dark:border-zinc-800 dark:border-t-violet-500 mx-auto mb-4"></div>
+          <p className="text-zinc-600 dark:text-zinc-400 font-medium">Loading...</p>
         </div>
       </div>
     );
@@ -57,7 +57,7 @@ function App() {
       <AuthProvider>
         <Toaster position="top-center" toastOptions={{ duration: 4000 }} />
         <ErrorBoundary>
-          <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200">
+          <div className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-300 font-sans selection:bg-violet-500/30">
             <Navbar />
             <main className="min-h-[calc(100vh-80px)]">
               <Routes>

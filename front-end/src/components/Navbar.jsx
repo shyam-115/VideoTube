@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur dark:border-gray-800 dark:bg-gray-900/95">
+    <nav className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/70 backdrop-blur-xl dark:border-zinc-800/80 dark:bg-zinc-950/70 transition-colors duration-300">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Brand */}
@@ -44,8 +44,8 @@ const Navbar = () => {
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
-            <Link to={user ? "/home" : "/login"} className="flex items-center space-x-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <Link to={user ? "/home" : "/login"} className="flex items-center space-x-2 text-zinc-900 dark:text-white hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-300 group">
+              <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-md shadow-violet-500/20 group-hover:scale-105 transition-transform duration-300">
                 <span className="text-white font-bold text-sm">VT</span>
               </div>
               <span className="text-2xl font-extrabold tracking-tight">VideoTube</span>
@@ -62,11 +62,11 @@ const Navbar = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search videos, channels..."
-                  className="w-full pl-10 pr-12 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 bg-gray-50 text-gray-900 border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-700"
+                  className="w-full pl-10 pr-12 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent placeholder-zinc-400 bg-zinc-100/50 text-zinc-900 dark:bg-zinc-900/50 dark:text-zinc-100 dark:border-zinc-800 transition-all duration-300"
                 />
                 <button
                   type="submit"
-                  className="absolute right-1 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-md text-sm font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 px-4 py-1.5 rounded-lg text-sm font-medium transition-all bg-violet-600 text-white hover:bg-violet-700 active:scale-95 shadow-sm hover:shadow-violet-500/25"
                 >
                   Search
                 </button>
@@ -112,18 +112,18 @@ const Navbar = () => {
               <>
                 <Link 
                   to="/login" 
-                  className="relative inline-flex items-center justify-center p-[2px] overflow-hidden text-sm font-medium text-gray-900 dark:text-white rounded-lg group bg-gradient-to-br from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 dark:from-gray-700 dark:to-gray-600 dark:hover:from-gray-600 dark:hover:to-gray-700 transition-all duration-300"
+                  className="relative inline-flex items-center justify-center p-[2px] overflow-hidden text-sm font-medium text-zinc-900 dark:text-white rounded-xl group bg-gradient-to-br from-zinc-200 to-zinc-300 hover:from-zinc-300 hover:to-zinc-400 dark:from-zinc-800 dark:to-zinc-700 dark:hover:from-zinc-700 dark:hover:to-zinc-600 transition-all duration-300 shadow-sm"
                 >
-                  <span className="relative px-4 py-2 transition-all ease-in duration-75 bg-transparent rounded-md group-hover:bg-opacity-0">
+                  <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-zinc-900 rounded-[10px] group-hover:bg-opacity-0">
                     <LogIn className="w-4 h-4 mr-2 inline" />
                     Login
                   </span>
                 </Link>
                 <Link 
                   to="/register" 
-                  className="relative inline-flex items-center justify-center p-[2px] overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-blue-600 to-purple-500 hover:from-blue-700 hover:to-purple-600 transition-all duration-300"
+                  className="relative inline-flex items-center justify-center p-[2px] overflow-hidden text-sm font-medium text-white rounded-xl group bg-gradient-to-br from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all duration-300 shadow-sm hover:shadow-violet-500/25"
                 >
-                  <span className="relative px-4 py-2 transition-all ease-in duration-75 bg-transparent rounded-md group-hover:bg-opacity-0">
+                  <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-transparent rounded-[10px] group-hover:bg-opacity-0">
                     <UserPlus className="w-4 h-4 mr-2 inline" />
                     Register
                   </span>
