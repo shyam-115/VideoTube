@@ -114,57 +114,6 @@ VITE_API_BASE_URL=http://localhost:8000/api/v1
 
 ---
 
-## 📡 API Reference
-
-All routes are prefixed with `/api/v1`.
-
-### Health
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/health` | Server & DB health check |
-
-### Users – `/users`
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/register` | ❌ | Register (avatar + cover image upload) |
-| POST | `/login` | ❌ | Login, returns JWT cookies |
-| POST | `/logout` | ✅ | Logout |
-| POST | `/refresh-token` | ❌ | Refresh access token |
-| POST | `/change-password` | ✅ | Change password |
-| GET | `/current-user` | ✅ | Get logged-in user |
-| PATCH | `/update-details` | ✅ | Update name / email |
-| PATCH | `/avatar` | ✅ | Update avatar |
-| PATCH | `/cover-image` | ✅ | Update cover image |
-| GET | `/c/:username` | ❌ | Get channel profile |
-| GET | `/watch-history` | ✅ | Get watch history |
-| GET | `/search?query=` | ❌ | Search channels |
-
-### Videos – `/videos`
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/upload` | ✅ | Upload video + thumbnail |
-| GET | `/` | ❌ | Get all published videos |
-| GET | `/:id` | ❌ | Get video by ID (increments views) |
-| GET | `/channel/:userId` | ❌ | Get all videos for a channel |
-
-### Likes – `/likes`
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/:id` | ✅ | Toggle like / dislike |
-| GET | `/:id/count` | ✅ | Get like & dislike counts |
-| GET | `/status/:id` | ✅ | Get current user's reaction |
-
-### Subscriptions – `/subscriptions`
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/:channelId` | ✅ | Subscribe to channel |
-| DELETE | `/:channelId` | ✅ | Unsubscribe from channel |
-| GET | `/isSubscribed/:channelId` | ✅ | Check subscription status |
-| GET | `/count/:channelId` | ✅ | Get subscriber count |
-| GET | `/subscribed` | ✅ | Get subscribed channels list |
-
----
-
 ## 🖥️ Front-end Pages
 
 | Route | Page | Description |
